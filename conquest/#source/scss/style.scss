@@ -1,0 +1,744 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,regular,500,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:regular,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Prata:regular&display=swap&subset=cyrillic-ext');
+
+@import "nullstyle.scss";
+//<ПЕРЕМЕННЫЕ>=================================================================================================
+$maxWidth: 1366px;
+//Ограничивающий контейнер
+$maxWidthContainer: 1170px;
+
+//Палитра
+$color1: #555248;
+$color2: #1B1A17;
+$color3: #FDFDFB;
+$color4: #8B8371;
+$color5: #444240;
+$color6: #C4C0B6;
+$color7: #F7F5EF;
+$color8: #D4B098;
+
+//Значения по умолчанию
+$fontFamilyDefault: "Roboto";
+$fontSizeDefault: 12px;
+//</ПЕРЕМЕННЫЕ>================================================================================================
+
+//<MIXIN>======================================================================================================
+@mixin mixn_font($size, $lh, $color) {
+	font-size: $size;
+	line-height: $lh / $size *100%;
+	color: $color;
+}
+//</MIXIN>=====================================================================================================
+body {
+	font: {
+		family: $fontFamilyDefault;
+		weight: 400;
+		size: $fontSizeDefault;
+	}
+}
+//===========================================================================================================
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+._container {
+	max-width: $maxWidthContainer;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+//<HEADER>=========================================================================================================
+.header {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 50;
+
+	&__container {
+		display: flex;
+		min-height: 85px;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.header__icon {
+	display: flex;
+	align-items: center;
+
+	fill: linear-gradient(121.81deg, #555248 36.9%, rgba(27, 26, 23, 0) 74.57%);
+}
+
+.header__name {
+	font-family: 'Playfair Display';
+	@include mixn_font($fontSizeDefault, 16px, $color1);
+	letter-spacing: 0.14em;
+}
+
+.menu {
+	&__list {
+		display: flex;
+	}
+
+	&_item:not(:last-child){
+		margin-right: 65px;
+	}
+
+	&__link {
+		@include mixn_font(14px, 16px, $color1);
+	}	
+}
+
+.header__icons {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.icons__search {
+	margin-right: 23px;
+}
+
+.search {
+	position: relative;
+
+	& input#search{
+		visibility: hidden;
+		width: 16px;
+		height: 30px;
+		font-size: 12px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		color: $color1;
+		-webkit-transition: width .55s ease;
+		-moz-transition: width .55s ease;
+		-ms-transition: width .55s ease;
+		-o-transition: width .55s ease;
+		transition: width .55s ease;
+	}
+	& &__icon {
+		position: absolute;
+		top: 20%;
+		z-index: 1;
+		color: $color2;
+		padding-left: 8px;
+	}
+
+	&:hover input#search{
+		visibility: visible;
+		padding-left: 35px;
+		border: 1px solid rgba(27, 26, 23, 0.5);
+		width: 200px;
+		margin-right: -10px;
+	}
+}
+
+.icons__favorites {
+	margin-right: 15px;
+}
+
+.favorites {
+	height: 16px;
+	width: 19px;
+	background-image: url("../img/icons/favorites.svg");
+	background-size: cover;
+	background-position: right;
+	position: relative;
+
+	&__indicator {
+		width: 13px;
+		height: 13px;
+		position: absolute;
+		left: 65%;
+		bottom: 58%;
+		background-color: #E6C8B4;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__count a{
+		@include mixn_font(8px, 9px, $color2);
+		display: inline-flex;
+		margin-bottom: 2.5px;
+	}
+}
+//</HEADER>=========================================================================================================
+
+//<PAGE>=========================================================================================================
+.page {
+	flex: 1 1 auto;
+	
+}
+
+.main-block {
+	position: relative;
+
+	&__container {
+		display: flex;
+		position: relative;
+		z-index: 10;
+	}
+
+	&__general-info {
+		display: flex;
+	}
+}
+
+.general-info {
+	margin-top: 236px + 85px;
+
+	&__line {
+		margin-top: 36px;
+	}
+
+	&__general-info {
+		width: 344px;
+		margin-left: 15px;
+		z-index: 17;
+	}
+
+	&__title {
+		font-family: 'Playfair Display';
+		@include mixn_font(45px, 60px, $color2);
+	}
+
+	&__subtitle {
+		font-family: 'Playfair Display';
+		@include mixn_font(30px, 40px, $color2);
+		margin-bottom: 31px;
+	}
+
+	&__text {
+		font-weight: 300;
+		@include mixn_font(14px, 21px, rgba(27, 26, 23, 0.82));
+		margin-bottom: 36px;
+	}
+
+	&__button {
+		margin-left: -4px;
+	}
+}
+
+.button {
+	width: 205px;
+	height: 64px;
+	background-color: $color5;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__button {
+		font-weight: 500;
+		@include mixn_font($fontSizeDefault, 14px, #FFFFFF);
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+}
+
+.main-block__img-info {
+	margin-top: 85px;
+	
+}
+
+.img-info {
+	&__body {
+		display: flex;
+	}
+
+	&__prace {
+		display: flex;
+		height: 16px;
+		margin-top: 198px;
+		margin-left: 53px;
+	}
+}
+
+.prace {
+	z-index: 16;
+
+	&__prace {
+		font-family: 'Prata';
+		@include mixn_font(16px, 22px, $color2);
+		margin-right: 7px;
+	}
+
+	&__icon {
+		width: 9.6px;
+		fill: $color2;
+		align-self:center;
+		margin-right: 15.4px;
+	}
+
+	&__line {
+		align-self:center;
+	}
+}
+
+.img-info__img {
+	margin-top: -11px;
+	margin-left: -61px;
+	z-index: 15;
+
+	& img {
+		width: 502.63px;
+		height: 804.25px;
+	}
+}
+
+.img-info__value {
+	height: 16px;
+	display: flex;
+	align-self:flex-end;
+	margin-bottom: 116px;
+	margin-left: -102px;
+}
+
+.value {
+	&__line {
+		margin-right: 15px;
+		align-self:center;
+	}
+
+	&__value {
+		font-family: 'Prata';
+		@include mixn_font(16px, 22px, $color2);
+	}
+}
+
+.img-info__ellipse {
+	position: absolute;
+	width: 496px;
+	height: 944.01px;
+	margin-top: -889px;
+	margin-left: -59px;
+	border-radius: 100% 0 0 100% / 50% 0 0 50%;
+	background: linear-gradient(180deg, rgba(234, 227, 212, 0) 0%, #EAE3D4 100%);
+	mix-blend-mode: normal;
+}
+
+.main-block__bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: $color3;
+}
+
+.line {
+	height: 1px; 
+	width: 50px; 
+	background: $color4; 
+}
+
+//<POPULAR>================================================================
+.page__popular {
+	position: relative;
+	margin-bottom: 86px;
+}
+
+.popular {
+	position: relative;
+	margin-top: -27px;
+
+	&__container {
+		position: relative;
+		padding-top: 79px;
+		z-index: 20;
+	}
+
+	&__title {
+		margin-left: 432px;
+		font-family: 'Playfair Display';
+		@include mixn_font(32px, 43px, $color2);
+	}
+
+	&__see-all {
+		position:absolute;
+		right: 0;
+		padding-right: 15px;
+	
+		& a {
+			font-weight: 500;
+			@include mixn_font(16px, 19px, $color5);
+		}
+	}
+
+	&__line {
+		display: block;
+		height: 1px; 
+		background: $color6; 
+		width: 102px; 
+		margin: 7.5px auto 0; 
+	}
+
+	&__column {
+		display: flex;
+		margin-top: 52px;
+	}
+
+	&__item {
+		width: 370px;
+		height: 467px;
+		background: $color3;
+		padding-left: 40px;
+	}
+
+	&__item:not(:last-child){
+		margin-right: 34px;
+	}
+
+	&__item-body {
+		padding-top: 40px;
+	}
+
+	&__name {
+		font-family: 'Playfair Display';
+		font-weight: 700;
+		@include mixn_font(14px, 24px, rgba(27, 26, 23, 0.82));
+		letter-spacing: 0.03em;
+
+		display: inline-block;
+		margin-bottom: 6px;
+	}
+}
+
+.prace-popular {
+	display: flex;
+	align-self:center;
+
+	&__prace {
+		font-family: 'Prata';
+		@include mixn_font($fontSizeDefault, 16px, rgba(27, 26, 23, 0.82));
+	}
+
+	&__icon {
+		align-self:center;
+		margin-left: 4px;
+	}
+
+	&__icon img{
+		width: 7.14px;
+		height: 10px;
+		fill: $color5;
+	}
+}
+
+.popular__img img{
+	width: 313px;
+	height: 313px;
+	margin-top: -5px;
+	margin-left: -12px;
+}
+
+.popular__info {
+	display: flex;
+	align-items: center;
+	margin-top: 19px;
+	//margin-bottom: 40px;
+}
+
+
+.info-popular__line {
+	margin-right: 18px;
+	width: 30px;
+}
+
+.info-popular__link a{
+	font-family: 'Playfair Display';
+	@include mixn_font(16px, 21px, $color2);
+}
+
+.popular-info__circle {
+	position: absolute;
+	width: 313px;
+	height: 313px;
+	margin-top: -344px;
+	margin-left: -12px;
+}
+
+.popular-block__bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color:  #FFFFFF;
+	z-index: 19;
+}
+//</POPULAR>====================================================================================
+
+//<BANNER>======================================================================================
+.banner {
+	position: relative;
+
+	&__container {
+		display: flex;
+		position: relative;
+		padding-top: 52px;
+		padding-left: 79px;
+		z-index: 27;
+	}
+
+	&__img > img{
+		margin-bottom: 20px;
+	}
+
+	&__pagination {
+		display:flex;
+		flex-wrap: wrap;
+		margin-left: 375px;
+	}
+
+	&__info {
+		margin-top: 88px;
+		margin-left: 69px;
+	}
+
+	&__title {
+		font-family: 'Playfair Display';
+		@include mixn_font(32px, 43px, $color2);
+		margin-bottom: 29px;
+	}
+
+	&__decript {
+		@include mixn_font(16px, 24px, $color5);
+		margin-bottom: 40px;
+	}
+
+	&__button {
+		background-color: $color8;
+	}
+
+	&__bg {
+		position: absolute;
+		width: 31.5%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: $color7;
+	}
+}
+
+.pagination {
+	&__previous {
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+
+	&__number {
+		font-family: 'Prata';
+		@include mixn_font($fontSizeDefault, 16px, rgba(27, 26, 23, 0.82));
+	}
+
+	&__next {
+		margin-left: 20px;
+	}
+}
+
+.bg-gradient {
+	position: absolute;
+	width: 67.5%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	background-color: $color3;
+
+	&__ellipse-s {
+		position: absolute;
+		right: -130px;
+		width: 365.16px;
+		height: 365.16px;
+	}
+
+	&__ellipse-m {
+		position: absolute;
+		right: -520px;
+		top: -20px;
+		width: 744.38px;
+		height: 744.38px;	
+	}
+}
+//</BANNER>======================================================================================
+//<FOLLOW>=======================================================================================
+.follow {
+	margin-bottom: 90px;
+
+	&__container {
+		position: relative;
+		padding-top: 81px;
+		display: flex;
+	}
+}
+
+.social-network {
+	margin-top: 140px;
+
+	&__title {
+		font-family: 'Playfair Display';
+		@include mixn_font(32px, 43px, $color2);
+		margin-bottom: 29px
+	}
+
+	&__text {
+		@include mixn_font(16px, 27px, $color5);
+
+		& span{
+			font-weight: 700;
+			color: #262421;
+		}
+		margin-bottom: 111px;
+	}
+}
+
+.social {
+	display: flex;
+	height: 22.78px;
+
+	&__instagram {
+		height: 22.78px;
+		width: 23px;	
+		margin-right: 18px;
+	}
+
+	&__facebook {
+		height: 20.88px;
+		width: 12px;
+		margin-right: 18px;
+	}
+
+	&__twitter {
+		height: 17.08px;
+		width: 22px;
+		align-self:flex-end;
+	
+		& img {
+			margin-top: -3px;
+		}
+	}
+}
+
+.img-follow {
+	margin-left: 70px;
+	display: flex;
+
+	&__left {
+		display: flex;
+		flex-direction: column;
+		flex: 0 0 50%;
+	}
+
+	&__pic1 {
+		flex: 50%;
+		width: 242px;
+		height: 228px;
+		margin-bottom: 10px;
+	}
+
+	&__pic2 {
+		flex: 50%;
+		width: 242px;
+		height: 222px;
+	}
+
+	&__right {
+		flex: 1;
+		width: 377px;
+		height: 460px;
+		margin-left: -38px;
+	}
+}
+//</FOLLOW>========================================================================================================
+//</PAGE>==========================================================================================================
+
+//<FOOTER>=========================================================================================================
+.footer {
+	background: $color5;
+
+	&__body {
+		max-width: $maxWidthContainer;
+		margin: 0 auto;
+	}
+
+	&__container {
+		display: flex;
+		margin-bottom: 67px;
+		padding-top: 79px;
+	}
+
+	&__column:first-child {
+		margin-left: 87px;
+	}
+
+	&__column:not(:last-child) {
+		margin-right: 146px;
+	}
+
+	&__logo {
+		margin-bottom: 33px;
+	}
+
+	&__label {
+		font-weight: 700;
+		@include mixn_font(14px, 16px, #FFFFFF);
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		margin-bottom: 33px;
+	}
+
+	&__icon {
+		display: flex;
+		margin-top: -10px;
+	}
+
+	&__icon img{
+		width: 25.11px;
+		height: 25.13px;
+		margin-right: 4px;
+	}
+
+	&__name {
+		font-family: 'Playfair Display';
+		font-weight: 700;
+		@include mixn_font(14px, 19px, #FFFFFF);
+		letter-spacing: 0.14em;
+		
+		align-self: flex-end;
+		margin-top: 8px;
+	}
+
+	&__contacts {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.contacts-footer {
+	&__item {
+		@include mixn_font($fontSizeDefault, 14px, rgba(255, 255, 255, 0.75));
+
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+	
+}
+
+.menu-footer {
+	&__item:not(:last-child) {
+		margin-bottom: 15px
+	}
+
+	&__link {
+		@include mixn_font($fontSizeDefault, 14px, rgba(255, 255, 255, 0.75));
+	}
+}
+//</FOOTER>=========================================================================================================
